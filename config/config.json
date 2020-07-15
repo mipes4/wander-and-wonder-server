@@ -1,9 +1,6 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "secret",
-    "database": "Wander and Wonder development",
-    "host": "localhost",
+    "url": "postgres://riyvizvz:ewBiavriOeqjEdTDEB0XDSnxsF-TzAbs@balarama.db.elephantsql.com:5432/riyvizvz",
     "dialect": "postgres",
     "operatorsAliases": "0"
   },
