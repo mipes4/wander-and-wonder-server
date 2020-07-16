@@ -2,10 +2,7 @@ require("dotenv").config();
 
 module.exports = {
   development: {
-    username: "postgres",
-    password: "secret",
-    database: "Wander and Wonder development",
-    host: "localhost",
+    url: process.env.DATABASE_URL,
     dialect: "postgres",
     operatorsAliases: "0",
   },
