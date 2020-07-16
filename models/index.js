@@ -14,7 +14,12 @@ if (config.use_env_variable) {
 } else if (config.url) {
   sequelize = new Sequelize(config.url, config);
 } else {
-  sequelize = new Sequelize(config.url, config);
+  sequelize = new Sequelize(
+    config.database,
+    config.username,
+    config.password,
+    config
+  );
 }
 
 fs.readdirSync(__dirname)

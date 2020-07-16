@@ -8,7 +8,7 @@ module.exports = {
         {
           playerId: 1,
           categoryId: 1,
-          score: 5,
+          score: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -22,14 +22,14 @@ module.exports = {
         {
           playerId: 1,
           categoryId: 2,
-          score: 7,
+          score: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           playerId: 2,
           categoryId: 1,
-          score: 9,
+          score: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -43,7 +43,7 @@ module.exports = {
         {
           playerId: 2,
           categoryId: 2,
-          score: 7,
+          score: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

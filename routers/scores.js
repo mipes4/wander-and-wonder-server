@@ -40,17 +40,21 @@ router.get("/player/:playerId", async (req, res, next) => {
   }
 });
 
-router.post("/player/:playerId", async (req, res, next) => {
+router.post("/player/:playerId/:categoryId/", async (req, res, next) => {
   try {
-    const { playerId } = req.params;
-    const { categoryId, score } = req.body;
+    const { categoryId, playerId } = req.params;
+    const { score } = req.body;
+    console.log("SCORE", score);
+    console.log("CATEGORY", categoryId);
+    console.log("PLAYER", playerId);
 
     if (!categoryId || !playerId) {
       response.status(400).send("Must provide title and amount for expense");
     } else {
+      console.log("WHAT THE FUCK IS HAPPENING HERE");
       const newScore = await Score.create({
-        playerId,
-        categoryId,
+        playerId: parseInt(playerId),
+        categoryId: parseInt(categoryId),
         score,
       });
 
