@@ -12,7 +12,7 @@ const router = new Router();
 router.get("/", async (req, res, next) => {
   try {
     const score = await Score.findAll({
-      include: { model: Category },
+      include: [Category, Player],
     });
     res.send(score);
   } catch (e) {
@@ -23,7 +23,26 @@ router.get("/", async (req, res, next) => {
 router.get("/category/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const score = await Score.findAll({ where: { categoryId: id } });
+    const score = await Score.findAll({
+      attributes: [
+        "categoryId",
+        [sequelize.fn("MAX", sequelize.col("score")), "score"],
+      ],
+      where: { categoryId: id },
+      include: [
+        {
+          model: Category,
+          attributes: ["name"],
+        },
+        {
+          model: Player,
+          attributes: ["name", "highestScore"],
+        },
+      ],
+      group: ["categoryId", "category.id", "player.id", "player.highestScore"],
+      order: [[sequelize.fn("max", sequelize.col("score")), "DESC"]],
+    });
+
     res.send(score);
   } catch (e) {
     next(e);
